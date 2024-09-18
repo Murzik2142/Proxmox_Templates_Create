@@ -2,3 +2,6 @@
 # tasks file for Proxmox_Templates_Create
 - name: Test proxmox
   ansible.builtin.import_tasks: task_1_preinit.yml
+  
+- name: Check qcow2
+  ansible.builtin.import_tasks: task_2_qcow2.yml
