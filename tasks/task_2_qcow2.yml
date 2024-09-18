@@ -1,9 +1,9 @@
-- name: Check if Debian exists
+- name: Check if {{ qcow2_image_name }} exists
   ansible.builtin.stat:
     path: "{{ qcow2_image_path }}"
   register: qcow2_file_stat
 
-- name: Download Debian.qcow2 if not present
+- name: Download {{ qcow2_image_name }} if not present
   ansible.builtin.get_url:
     url: "{{ qcow2_download_url }}"
     dest: "{{ qcow2_image_path }}"
