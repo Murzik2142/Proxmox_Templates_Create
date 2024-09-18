@@ -3,3 +3,14 @@
 proxmox_api_host: "proxmox1.home.local"
 proxmox_api_user: "root@pam"
 proxmox_api_password: "11111111"
+
+# vars templates
+
+# Templates ID
+vmid: 9004
+# Template Name
+template_name: Debian12CloudInit-ansible
+# Image disk
+diskomange_qcow2: debian-12-genericcloud-amd64.qcow2
+# Location template
+host_disk: local-lvm
