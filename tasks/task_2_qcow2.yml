@@ -1,9 +1,9 @@
-- name: Check if {{ qcow2_image_name }} exists
+- name: Check if {{ qcow2_image_path }} exists
   ansible.builtin.stat:
     path: "{{ qcow2_image_path }}"
   register: qcow2_file_stat
 
-- name: Download {{ qcow2_image_name }} if not present
+- name: Download {{ qcow2_image_path }} if not present
   ansible.builtin.get_url:
     url: "{{ qcow2_download_url }}"
     dest: "{{ qcow2_image_path }}"
