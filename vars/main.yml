@@ -11,6 +11,8 @@ vmid: 9004
 # Template Name
 template_name: Debian12CloudInit-ansible
 # Image disk
-diskomange_qcow2: debian-12-genericcloud-amd64.qcow2
+qcow2_image_name: debian-12-genericcloud-amd64.qcow2
+qcow2_image_path: "/tmp/{{ qcow2_image_name }}"
+qcow2_download_url: "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
 # Location template
 host_disk: local-lvm
