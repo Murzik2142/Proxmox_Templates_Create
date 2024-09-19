@@ -7,7 +7,7 @@ Requirements
 ------------
 
 Proxmox 8.2.4+\
-Debian 12.4+\
+ALSE 1.8+\
 ansible 3.1.2+\
 ansible-galaxy 2.16.11+\
 Not tested on earlier versions
