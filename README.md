@@ -1,38 +1,60 @@
-Role Name
+Proxmox_Templates_Create
 =========
 
-A brief description of the role goes here.
+The task involves downloading Debian 12 from a repository to /tmp in qcow2 format and creating a template in Proxmox with cloudinit support.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Proxmox 8.2.4+
+Debian 12.4+
+ansible 3.1.2+
+ansible-galaxy 2.16.11+
+Not tested on earlier versions
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+# Vars file for Proxmox_Templates_Create
+proxmox_api_host: "proxmox1.home.local"
+proxmox_api_user: "root@pam"
+proxmox_api_password: "11111111"
+proxmox_node: "proxmox1"
+
+# Image disk qcow2
+qcow2_image_name: debian-12-genericcloud-amd64.qcow2
+qcow2_image_path: "/tmp/{{ qcow2_image_name }}"
+qcow2_download_url: "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
+
+### vars templates
+# Templates ID
+vmid: 9004
+# Template Name
+template_name: Debian12CloudInit-ansible
+# Location disk storage
+vm_storage: "local-lvm"
+# Network interface
+vm_net: "virtio,bridge=vmbr0,tag=2"
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Dependencies are absent
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+- name: Create templates in Proxmox
+  hosts: proxmox
+  roles:
+    - Proxmox_Templates_Create
 
 License
 -------
 
-BSD
+BSD-3-Clause
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Murzabaev Marat (murzik2142@gmail.com)
