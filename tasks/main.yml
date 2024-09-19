@@ -7,4 +7,4 @@
   ansible.builtin.import_tasks: task_2_qcow2.yml
 
 - name: Create VM for template
-  ansible.builtin.import_tasks: task_3_create_vm.yml
+  ansible.builtin.import_tasks: task_3_create_template.yml
