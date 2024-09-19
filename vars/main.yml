@@ -14,7 +14,7 @@ qcow2_download_url: "https://registry.astralinux.ru/artifactory/mg-generic/alse/
 # Templates ID
 vmid: 9005
 # Template Name
-template_name: ALSE_1.8_cloud-ansible
+template_name: ALSE-1.8-cloud-ansible
 # Location disk storage
 vm_storage: "local-lvm"
 # Network interface
