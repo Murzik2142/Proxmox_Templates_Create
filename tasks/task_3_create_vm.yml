@@ -1,0 +1,45 @@
+- name: Check if VM with vmid exists
+  shell: "qm status {{ vmid }}"
+  ignore_errors: true
+  register: vm_status
+  changed_when: false
+
+- name: Create the VM
+  shell: "qm create {{ vmid }} --name {{ template_name }} --net0 virtio,bridge=vmbr0,tag=2"
+  when: vm_status.rc != 0
+
+- name: Set the OSType to Linux Kernel 6.x
+  shell: "qm set {{ vmid }} --ostype l26"
+  when: vm_status.rc != 0
+
+- name: Import the disk
+  shell: "qm importdisk {{ vmid }} {{ qcow2_image_path }} {{ vm_storage }}"
+  when: vm_status.rc != 0
+
+- name: Attach disk to scsi bus
+  shell: "qm set {{ vmid }} --scsihw virtio-scsi-pci --scsi0 {{ vm_storage }}:vm-{{ vmid }}-disk-0"
+  when: vm_status.rc != 0
+
+- name: Set scsi disk as boot device
+  shell: "qm set {{ vmid }} --boot c --bootdisk scsi0"
+  when: vm_status.rc != 0
+
+- name: Create and attach cloudinit drive
+  shell: "qm set {{ vmid }} --ide2 {{ vm_storage }}:cloudinit"
+  when: vm_status.rc != 0
+
+- name: Set serial console
+  shell: "qm set {{ vmid }} --serial0 socket --vga serial0"
+  when: vm_status.rc != 0
+
+- name: Enable Qemu Guest Agent
+  shell: "qm set {{ vmid }} --agent enabled=1"
+  when: vm_status.rc != 0
+
+- name: Start the VM at boot
+  shell: "qm set {{ vmid }} --onboot 1"
+  when: vm_status.rc != 0
+
+- name: Convert the VM into a template
+  shell: "qm template {{ vmid }}"
+  when: vm_status.rc != 0
