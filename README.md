@@ -15,19 +15,19 @@ Not tested on earlier versions
 Role Variables
 --------------
 
-proxmox_api_host: "proxmox1.home.local" - dns or ip-address
-proxmox_api_user: "root@pam" - login WebUI
-proxmox_api_password: "11111111" - password
-proxmox_node: "proxmox1" - node name (default: pve)
+proxmox_api_host: "proxmox1.home.local" - dns or ip-address\
+proxmox_api_user: "root@pam" - login WebUI\
+proxmox_api_password: "11111111" - password\
+proxmox_node: "proxmox1" - node name (default: pve)\
 
-qcow2_image_name: debian-12-genericcloud-amd64.qcow2 - name file
-qcow2_image_path: "/tmp/{{ qcow2_image_name }}" - location
-qcow2_download_url: "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2" - url download
+qcow2_image_name: debian-12-genericcloud-amd64.qcow2 - name file\
+qcow2_image_path: "/tmp/{{ qcow2_image_name }}" - location\
+qcow2_download_url: "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2" - url download\
 
-vmid: 9004 - ID template in proxmox
-template_name: Debian12CloudInit-ansible - Name template in Proxmox
-vm_storage: "local-lvm" - storage in Proxmox
-vm_net: "virtio,bridge=vmbr0,tag=2" - networking interface in Proxmox
+vmid: 9004 - ID template in proxmox\
+template_name: Debian12CloudInit-ansible - Name template in Proxmox\
+vm_storage: "local-lvm" - storage in Proxmox\
+vm_net: "virtio,bridge=vmbr0,tag=2" - networking interface in Proxmox\
 
 Dependencies
 ------------
