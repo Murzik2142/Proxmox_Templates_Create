@@ -1,9 +1,9 @@
 ---
 # Vars file for Proxmox_Templates_Create
-proxmox_api_host: "proxmox1.home.local"
+proxmox_api_host: "127.0.0.1"
 proxmox_api_user: "root@pam"
-proxmox_api_password: "11111111"
-proxmox_node: "proxmox1" 
+proxmox_api_password: "password"
+proxmox_node: "pve" 
 
 # Image disk qcow2
 qcow2_image_name: debian-12-genericcloud-amd64.qcow2
