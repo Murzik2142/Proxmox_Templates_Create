@@ -13,8 +13,6 @@ qcow2_download_url: "https://cloud.debian.org/images/cloud/bookworm/latest/debia
 ### vars templates
 # Templates ID
 vmid: 9004
-# Name VM for template
-vm_name: "template-vm"
 # Template Name
 template_name: Debian12CloudInit-ansible
 # Location disk storage
