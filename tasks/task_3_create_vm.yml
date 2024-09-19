@@ -1,3 +1,4 @@
+# Easy way
 - name: Check if VM with vmid exists
   shell: "qm status {{ vmid }}"
   ignore_errors: true
@@ -5,7 +6,7 @@
   changed_when: false
 
 - name: Create the VM
-  shell: "qm create {{ vmid }} --name {{ template_name }} --net0 virtio,bridge=vmbr0,tag=2"
+  shell: "qm create {{ vmid }} --name {{ template_name }} --net0 {{ vm_net }}"
   when: vm_status.rc != 0
 
 - name: Set the OSType to Linux Kernel 6.x
