@@ -15,11 +15,6 @@ Not tested on earlier versions
 Role Variables
 --------------
 
-___proxmox_api_host:___ "proxmox1.home.local" - dns or ip-address\
-___proxmox_api_user:___ "root@pam" - login WebUI\
-___proxmox_api_password:___ "11111111" - password\
-___proxmox_node:___ "proxmox1" - node name (default: pve)
-
 ___qcow2_image_name:___ debian-12-genericcloud-amd64.qcow2 - name file\
 ___qcow2_image_path:___ "/tmp/{{ qcow2_image_name }}" - location\
 ___qcow2_download_url:___ "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2" - url download
@@ -40,6 +35,8 @@ Example Playbook
 ```
 - name: Create templates in Proxmox
   hosts: proxmox
+  vars:
+    vmid: "9006"
   roles:
     - Proxmox_Templates_Create
 ```

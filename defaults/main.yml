@@ -1,2 +1,16 @@
 ---
 # defaults file for Proxmox_Templates_Create
+# Image disk qcow2
+qcow2_image_name: debian-12-genericcloud-amd64.qcow2
+qcow2_image_path: "/tmp/{{ qcow2_image_name }}"
+qcow2_download_url: "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
+
+### vars templates
+# Templates ID
+vmid: 100
+# Template Name
+template_name: Debian12CloudInit-ansible
+# Location disk storage
+vm_storage: "local-lvm"
+# Network interface
+vm_net: "virtio,bridge=vmbr0,tag=2"
